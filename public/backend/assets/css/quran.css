@@ -1,0 +1,64 @@
+#formTypeSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #formTypeSelector h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  #formType {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    width: 250px;
+    max-width: 100%;
+    color: #333;
+  }
+
+  #formType option {
+    font-size: 16px;
+    color: #333;
+    background-color: #f5f5f5;
+  }
+
+  #formType option:hover {
+    background-color: #e0e0e0;
+  }
+
+  #formType option:checked {
+    background-color: #ddd;
+  }
+
+
+  #submitForm,
+#submitForm2,
+#submitForm3 {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#submitForm:hover,
+#submitForm2:hover,
+#submitForm3:hover {
+  background-color: #45a049;
+}
+
+#submitForm:focus,
+#submitForm2:focus,
+#submitForm3:focus {
+  outline: none;
+}
