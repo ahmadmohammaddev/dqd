@@ -284,8 +284,6 @@ class quran_a_controller extends Controller
 
 
 
-
-
     function  test()
     {
         $students_names = students::select('id', 'student_fn', 'student_ln')->get();

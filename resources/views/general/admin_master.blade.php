@@ -65,7 +65,7 @@
                 <!-- Aplication Brand -->
                 <div class="app-brand">
                     <a href="/index.html">
-<!--
+                        <!--
                         <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
                             width="30" height="33" viewBox="0 4 30 33">
                             <g fill="none" fill-rule="evenodd">
@@ -73,7 +73,8 @@
                                 <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                             </g>
                         </svg>-->
-                        <img src="{{ asset('backend/assets/img/favicon.png') }}" width="30" height="33" viewBox="0 4 30 33">
+                        <img src="{{ asset('backend/assets/img/favicon.png') }}" width="30" height="33"
+                            viewBox="0 4 30 33">
 
                         <span class="brand-name">لوحة تحكم الماسة القرآنية</span>
                     </a>
@@ -86,54 +87,16 @@
 
 
 
-                        <li class="has-sub active expand">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-                                <i class="mdi mdi-view-dashboard-outline"></i>
-                                <span class="nav-text">لوحة التحكم</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-
-
-
-                                    <li class="active">
-                                        <a class="sidenav-item-link" href="index.html">
-                                            <span class="nav-text">Ecommerce</span>
-
-                                        </a>
-                                    </li>
 
 
 
 
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="analytics.html">
-                                            <span class="nav-text">Analytics</span>
-
-                                            <span class="badge badge-success">new</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-                                </div>
-                            </ul>
-                        </li>
-
-
-
-
-
-                        <li class="has-sub">
+                        <li class="has-sub  active expand">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                 data-target="#ui-elements" aria-expanded="false" aria-controls="ui-elements">
-                               <!-- <i class="mdi mdi-book-open"></i>-->
-                                  <img src="{{ asset('backend/assets/img/quran.png') }}" width="30" height="33" viewBox="0 4 30 33" style="margin-right: 6%">
+                                <!-- <i class="mdi mdi-book-open"></i>-->
+                                <img src="{{ asset('backend/assets/img/quran.png') }}" width="30" height="33"
+                                    viewBox="0 4 30 33" style="margin-right: 6%">
                                 <span class="nav-text">القرآن الكريم</span> <b class="caret"></b>
                             </a>
 
@@ -154,11 +117,11 @@
                                                 </li>
 
                                                 <li>
-                                                    <a  href="{{ route('quran.add_cell') }}">إضافة خلية قرآنية</a>
+                                                    <a href="{{ route('quran.add_cell') }}">إضافة خلية قرآنية</a>
                                                 </li>
 
                                                 <li>
-                                                    <a  href="{{ route('quran.add_cells') }}">إضافة خلايا قرآنية</a>
+                                                    <a href="{{ route('quran.add_cells') }}">إضافة خلايا قرآنية</a>
                                                 </li>
                                                 <!--add from cell (surah + page) to cell (surah + page)-->
 
@@ -176,7 +139,8 @@
 
                                     <li class="has-sub">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#quran_viewer" aria-expanded="false" aria-controls="quran_viewer">
+                                            data-target="#quran_viewer" aria-expanded="false"
+                                            aria-controls="quran_viewer">
                                             <span class="nav-text">الإطلاع على بيانات القرآن الكريم</span> <b
                                                 class="caret"></b>
                                         </a>
@@ -188,7 +152,8 @@
                                                 </li>
 
                                                 <li>
-                                                    <a href="{{ route('quran.show.student_selector') }}">بيانات طالب</a>
+                                                    <a href="{{ route('quran.show.student_selector') }}">بيانات
+                                                        طالب</a>
                                                 </li>
 
                                                 <li>
@@ -206,7 +171,8 @@
 
                                     <li class="has-sub">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#quran_operations" aria-expanded="false" aria-controls="quran_operations">
+                                            data-target="#quran_operations" aria-expanded="false"
+                                            aria-controls="quran_operations">
                                             <span class="nav-text">العمليات على بيانات القرآن الكريم</span> <b
                                                 class="caret"></b>
                                         </a>
@@ -293,13 +259,6 @@
 
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="sidenav-item-link"  href="{{ route('management.students.main') }}">
-                                            <span class="nav-text">الطلاب</span>
-
-                                        </a>
-                                    </li>
-
 
 
 
@@ -307,209 +266,147 @@
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                             data-target="#authentication" aria-expanded="false"
                                             aria-controls="authentication">
-                                            <span class="nav-text">Authentication</span> <b class="caret"></b>
+                                            <span class="nav-text">الطلاب</span> <b class="caret"></b>
                                         </a>
                                         <ul class="collapse" id="authentication">
                                             <div class="sub-menu">
 
                                                 <li>
-                                                    <a href="sign-in.html">Sign In</a>
+                                                    <a href="{{ route('management.students.main') }}">التسجيل والملفات
+                                                        الشخصية</a>
                                                 </li>
 
-                                                <li>
-                                                    <a href="sign-up.html">Sign Up</a>
-                                                </li>
+                                                <li class="has-sub">
+                                                    <a class="sidenav-item-link" href="javascript:void(0)"
+                                                        data-toggle="collapse" data-target="#duties"
+                                                        aria-expanded="false" aria-controls="duties">
+                                                        <span class="nav-text">الواجبات</span> <b class="caret"></b>
+                                                    </a>
+                                                    <ul class="collapse" id="duties">
+                                                        <div class="sub-menu">
 
-                                            </div>
-                                        </ul>
-                                    </li>
+                                                            <li>
+                                                                <a href="{{ route('management.students.main') }}">
+                                                                    إضافة واجبات</a>
+                                                            </li>
 
+                                                            <li class="">
+                                                                <a href="sign-up.html">الإطلاع على الواجبات</a>
+                                                            </li>
 
-
-
-                                    <li class="has-sub">
-                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#others" aria-expanded="false" aria-controls="others">
-                                            <span class="nav-text">Others</span> <b class="caret"></b>
-                                        </a>
-                                        <ul class="collapse" id="others">
-                                            <div class="sub-menu">
-
-                                                <li>
-                                                    <a href="invoice.html">invoice</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="error.html">Error</a>
+                                                        </div>
+                                                    </ul>
                                                 </li>
 
                                             </div>
                                         </ul>
                                     </li>
+
+
 
 
 
                                 </div>
                             </ul>
                         </li>
-
-
-
 
 
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#documentation" aria-expanded="false" aria-controls="documentation">
-                                <i class="mdi mdi-book-open-page-variant"></i>
-                                <span class="nav-text">Documentation</span> <b class="caret"></b>
+                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                                <i class="mdi mdi-gift"></i>
+
+                                <span class="nav-text">النقاط والعطيات</span>
+                                <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="documentation" data-parent="#sidebar-menu">
+                            <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
-                                    <li class="section-title">
-                                        Getting Started
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="introduction.html">
-                                            <span class="nav-text">Introduction</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="setup.html">
-                                            <span class="nav-text">Setup</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="customization.html">
-                                            <span class="nav-text">Customization</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li class="section-title">
-                                        Layouts
-                                    </li>
-
-
-
-
-
                                     <li class="has-sub">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#headers" aria-expanded="false" aria-controls="headers">
-                                            <span class="nav-text">Layout Headers</span> <b class="caret"></b>
+                                            data-target="#points" aria-expanded="false" aria-controls="points">
+                                            <span class="nav-text">قسم النقاط</span>
+                                            <b class="caret"></b>
                                         </a>
-                                        <ul class="collapse" id="headers">
+                                        <ul class="collapse" id="points">
                                             <div class="sub-menu">
+                                                <li class="has-sub">
+                                                    <a href="javascript:void(0)" data-toggle="collapse"
+                                                        data-target="#points-option-1" aria-expanded="false"
+                                                        aria-controls="points-option-1">الإطلاع على النقاط<b
+                                                            class="caret"></b></a>
+                                                    <ul class="collapse" id="points-option-1">
+                                                        <div class="sub-menu">
+                                                            <li><a href={{ route('students.points.students.selector') }}>نقاط طالب</a></li>
+                                                            <li><a href="#">نقاط حلقة</a></li>
+                                                            <li><a href="#">نقاط دورة</a></li>
 
-                                                <li>
-                                                    <a href="header-fixed.html">Header Fixed</a>
+                                                        </div>
+                                                    </ul>
                                                 </li>
 
-                                                <li>
-                                                    <a href="header-static.html">Header Static</a>
+                                                <li class="has-sub">
+                                                    <a href="javascript:void(0)" data-toggle="collapse"
+                                                        data-target="#points-option-2" aria-expanded="false"
+                                                        aria-controls="points-option-2">إضافة نقاط<b
+                                                            class="caret"></b></a>
+                                                    <ul class="collapse" id="points-option-2">
+                                                        <div class="sub-menu">
+                                                            <li><a href="#">نقاط لطالب</a></li>
+                                                            <li><a href="#">نقاط لحلقة</a></li>
+                                                            <li><a href="#">نقاط لدورة</a></li>
+                                                        </div>
+                                                    </ul>
                                                 </li>
 
-                                                <li>
-                                                    <a href="header-light.html">Header Light</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="header-dark.html">Header Dark</a>
+                                                <li class="has-sub">
+                                                    <a href="javascript:void(0)" data-toggle="collapse"
+                                                        data-target="#points-option-3" aria-expanded="false"
+                                                        aria-controls="points-option-3">إعدادات النقاط<b
+                                                            class="caret"></b></a>
+                                                    <ul class="collapse" id="points-option-3">
+                                                        <div class="sub-menu">
+                                                            <li><a href="#">نقاط الحضور</a></li>
+                                                            <li><a href="#">نقاط تسميع القرآن الكريم</a></li>
+                                                        </div>
+                                                    </ul>
                                                 </li>
 
                                             </div>
                                         </ul>
                                     </li>
 
-
-
-
                                     <li class="has-sub">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#sidebar-navs" aria-expanded="false"
-                                            aria-controls="sidebar-navs">
-                                            <span class="nav-text">layout Sidebars</span> <b class="caret"></b>
+                                            data-target="#gifts" aria-expanded="false" aria-controls="gifts">
+                                            <span class="nav-text">قسم العطيات</span>
+                                            <b class="caret"></b>
                                         </a>
-                                        <ul class="collapse" id="sidebar-navs">
+                                        <ul class="collapse" id="gifts">
                                             <div class="sub-menu">
-
-                                                <li>
-                                                    <a href="sidebar-open.html">Sidebar Open</a>
+                                                <li class="has-sub">
+                                                    <a href="javascript:void(0)" data-toggle="collapse"
+                                                        data-target="#gifts-option-1" aria-expanded="false"
+                                                        aria-controls="gifts-option-1">قسم النقاط<b
+                                                            class="caret"></b></a>
+                                                    <ul class="collapse" id="gifts-option-1">
+                                                        <div class="sub-menu">
+                                                            <li><a href="#">الإطلاع على النقاط</a></li>
+                                                            <li><a href="#">خيار 2-1-2</a></li>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-
-                                                <li>
-                                                    <a href="sidebar-minimized.html">Sidebar Minimized</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="sidebar-offcanvas.html">Sidebar Offcanvas</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="sidebar-with-footer.html">Sidebar With Footer</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="sidebar-without-footer.html">Sidebar Without Footer</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="right-sidebar.html">Right Sidebar</a>
-                                                </li>
-
+                                                <li><a href="#">خيار 2-2</a></li>
+                                                <li><a href="#">خيار 2-3</a></li>
                                             </div>
                                         </ul>
                                     </li>
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="rtl.html">
-                                            <span class="nav-text">RTL Direction</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
                                 </div>
                             </ul>
                         </li>
 
 
-
                     </ul>
+
 
                 </div>
 
@@ -518,13 +415,13 @@
                 <div class="sidebar-footer">
                     <div class="sidebar-footer-content">
                         <h6 class="text-uppercase">
-                            Cpu Uses <span class="float-right">40%</span>
+                            عدد الطلاب الكلي <span class="float-right">40%</span>
                         </h6>
                         <div class="progress progress-xs">
                             <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
                         </div>
                         <h6 class="text-uppercase">
-                            Memory Uses <span class="float-right">65%</span>
+                            عدد الخلايا المسمعة <span class="float-right">65%</span>
                         </h6>
                         <div class="progress progress-xs">
                             <div class="progress-bar progress-bar-warning" style="width: 65%;" role="progressbar">
@@ -621,8 +518,8 @@
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <img src="{{ asset('backend/assets/img/user/user.png') }}" width="60" height="70" viewBox="0 4 60 60" class="img-circle"
-                                        alt="User Image" />
+                                    <img src="{{ asset('backend/assets/img/user/user.png') }}" width="60"
+                                        height="70" viewBox="0 4 60 60" class="img-circle" alt="User Image" />
                                     <span class="d-none d-lg-inline-block">Yahya Sbini</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -675,8 +572,8 @@
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
-                        &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                        <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                        &copy; <span id="copy-year">2023</span> Copyright are reserved for DQD Software
+                        .
                     </p>
                 </div>
                 <script>
@@ -712,9 +609,14 @@
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     <script src="{{ asset('backend/assets/js/quranic_diamond.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
 
 

@@ -4,11 +4,13 @@ use App\Http\Controllers\auth_controller;
 use App\Http\Controllers\management_department\management_staff_controller;
 use App\Http\Controllers\management_department\management_courses_controller;
 use App\Http\Controllers\management_department\management_students_controller;
+use App\Http\Controllers\management_department\rewa;
+
 use App\Http\Controllers\education_department\education_a_controller;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\quran_department\quran_a_controller;
-
+use App\Http\Controllers\rewards_department\points_controller;
 
 
 
@@ -87,6 +89,22 @@ Route::prefix('management')->group(function () {
     //////////////////////////////////////////////
     Route::get('students/profile/edit/{id}', [management_students_controller::class, 'show_student_main_info_to_edit'])->name('management.student.profile.show.to.edit');
     Route::post('students/profile/edit/apply', [management_students_controller::class, 'edit_student_main_info'])->name('management.student.profile.edit');
+
+
+    Route::get('students/duties/courses', [management_students_controller::class, 'show_courses'])->name('management.student.show.courses');
+    Route::get('students/duties/groups/{id}', [management_students_controller::class, 'show_groups'])->name('management.student.show.groups');
+
+    Route::get('students/duties/group/students', [management_students_controller::class, 'show_students_to_add_duties'])->name('management.students.show.to.add.duties');
+    Route::post('students/duties/group/students/add', [management_students_controller::class, 'students_add_duties'])->name('management.students.add.duties');
+
+    Route::get('students/duties/show/readonly', [management_students_controller::class, 'students_duties'])->name('management.students.duties.readonly');
+
+
+
+    Route::get('students/points/student/selector', [points_controller::class, 'student_selector'])->name('students.points.students.selector');
+    Route::post('students/points/show', [points_controller::class, 'student_points_calaculator'])->name('students.points.student.show');
+
+
 
 
     Route::get('staff/required/data', [management_staff_controller::class, 'data_to_add_staff'])->name('management.staff.required.data');

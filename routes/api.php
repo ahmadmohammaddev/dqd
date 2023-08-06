@@ -40,9 +40,9 @@ Route::prefix('quran')->group(function () {
     Route::post('student/recitation/add/multicells',[quran_a_controller::class,'post_multi_cell'])->name('quran.student.recitation.add.multicells');//students id ,reason id
     Route::post('student/recitation/add/surahs',[quran_a_controller::class,'post_surahs'])->name('quran.student.recitation.add,surahs');//students id ,reason id
 
-    Route::get('student/recitation/get/info/cell',[quran_a_controller::class,'test'])->name('quran.student.recitation.get.info.cell');//students id ,reason id
-    Route::get('student/recitation/get/info/multicells',[quran_a_controller::class,'test'])->name('quran.student.recitation.get.info.multicells');//students id ,reason id
-    Route::get('student/recitation/get/info/surahs',[quran_a_controller::class,'test'])->name('quran.student.recitation.get.info.surahs');//students id ,reason id
+    Route::get('student/recitation/get/info/cell',[quran_a_controller::class,'get_basic_info_for_cell'])->name('quran.student.recitation.get.info.cell');//students id ,reason id
+    Route::get('student/recitation/get/info/multicells',[quran_a_controller::class,'get_basic_info_for_cells'])->name('quran.student.recitation.get.info.multicells');//students id ,reason id
+    Route::get('student/recitation/get/info/surahs',[quran_a_controller::class,'get_basic_info_for_surahs'])->name('quran.student.recitation.get.info.surahs');//students id ,reason id
 
 
 
