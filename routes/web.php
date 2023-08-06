@@ -104,6 +104,9 @@ Route::prefix('management')->group(function () {
     Route::get('students/points/student/selector', [points_controller::class, 'student_selector'])->name('students.points.students.selector');
     Route::post('students/points/show', [points_controller::class, 'student_points_calaculator'])->name('students.points.student.show');
 
+ //   Route::post('students/points/show', [points_controller::class, 'student_points_calaculator'])->name('students.points.student.show');
+    Route::get('students/points/course', [points_controller::class, 'course_points'])->name('students.points.course.points');
+
 
 
 

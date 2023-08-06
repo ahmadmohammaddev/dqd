@@ -338,7 +338,7 @@
                                                         <div class="sub-menu">
                                                             <li><a href={{ route('students.points.students.selector') }}>نقاط طالب</a></li>
                                                             <li><a href="#">نقاط حلقة</a></li>
-                                                            <li><a href="#">نقاط دورة</a></li>
+                                                            <li><a href={{ route('students.points.course.points') }}>نقاط دورة</a></li>
 
                                                         </div>
                                                     </ul>
@@ -352,8 +352,8 @@
                                                     <ul class="collapse" id="points-option-2">
                                                         <div class="sub-menu">
                                                             <li><a href="#">نقاط لطالب</a></li>
-                                                            <li><a href="#">نقاط لحلقة</a></li>
-                                                            <li><a href="#">نقاط لدورة</a></li>
+                                                            <li><a href={{ route('students.points.course.points') }}>نقاط لحلقة</a></li>
+                                                            <li><a href={{ route('students.points.course.points') }}>نقاط لدورة</a></li>
                                                         </div>
                                                     </ul>
                                                 </li>
