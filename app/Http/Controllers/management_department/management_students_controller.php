@@ -20,10 +20,55 @@ use App\Models\students_groups;
 use App\Models\groups;
 use App\Models\courses;
 use App\Models\quran_recitations;
+use App\Models\students_attendances;
 use App\Models\students_relatives;
+use App\Services\PayUService\Exception;
+use Illuminate\Database\QueryException;
 
 class management_students_controller extends Controller
 {
+
+
+    function post_student_attndance(Request $request)
+    {
+
+        try {
+            $attendanceDate = $request->input('attendance_date');
+            $studentIds = $request->input('attendance');
+
+            foreach ($studentIds as $studentId) {
+                students_attendances::create([
+                    'students_id' => $studentId,
+                    'date' => $attendanceDate,
+                ]);
+            }
+            return redirect()->back()->with('success', 'Attendance recorded successfully.');
+        } catch (QueryException $e) {
+            $errorMessage = $e->getMessage();
+            return redirect()->back()->with('error', "حصل خطأ يرجى مراجعة المطور !" . "\n" . $errorMessage);
+        }
+    }
+
+
+    function show_groups($id)
+    {
+        $groups = groups::select('*')->where('courses_id', '=', $id)->get();
+
+        // $students = students::join('students_groups', 'students.id', '=', 'students_groups.students_id')
+        // ->whereIn('students_groups.groups_id', $groups->pluck('id')) // Filter by group IDs
+        // ->get();
+
+        return view('management.attendance.groups', compact('groups'));
+    }
+
+    function show_students($id)
+    {
+        $students = students_groups::join('students', 'students.id', '=', 'students_groups.students_id')
+            ->where('students_groups.groups_id', $id)
+            ->get();
+
+        return view('management.attendance.students', compact('students'));
+    }
 
     function main_home()
     {
@@ -200,7 +245,7 @@ class management_students_controller extends Controller
             ->where('students.id', '=', $id)
             ->get();
 
-//asdfsadf
+        //asdfsadf
         return view('management.students.profile', compact('student_info', 'common_medicines', 'chronic_diseases', 'neighborhoods', 'school_grades'));
     }
 
@@ -259,13 +304,13 @@ class management_students_controller extends Controller
             ->join('relatives', 'relatives.id', '=', 'students_relatives.relative_id')
             ->where('students_relatives.students_id', '=', $student_id)->get();
         $relative_count = count($relatives);
-        return view('management.students.relative_selector', compact('relatives', 'relative_count','student_id'));
+        return view('management.students.relative_selector', compact('relatives', 'relative_count', 'student_id'));
     }
 
 
 
 
-    function show_relative_main_info_to_edit($relative_id,$student_id)
+    function show_relative_main_info_to_edit($relative_id, $student_id)
     {
 
         $neighborhoods = neighborhoods::select('*')->get();
@@ -288,22 +333,24 @@ class management_students_controller extends Controller
             ->join('jobs', 'jobs.id', '=', 'relatives.job_id')
 
             ->where('relatives.id', '=', $relative_id)->get();
-             $relative_info = $relative_info[0];
+        $relative_info = $relative_info[0];
 
         $kinship_info = students_relatives::select(
             'students_relatives.*',
             'kinships.kinship_type',
             'kinships.id'
         )
-        ->join('kinships','kinships.id','=','students_relatives.kinships_id')
-        ->where('students_relatives.students_id', '=', $student_id)
-        ->where('students_relatives.relative_id', '=', $relative_id)
-        ->get();
+            ->join('kinships', 'kinships.id', '=', 'students_relatives.kinships_id')
+            ->where('students_relatives.students_id', '=', $student_id)
+            ->where('students_relatives.relative_id', '=', $relative_id)
+            ->get();
 
 
         //return $relative_info->resident_address;
-        return view('management.students.relative_info',
-         compact('jobs','educational_levels','kinships','neighborhoods','relative_info','kinship_info','student_id'));
+        return view(
+            'management.students.relative_info',
+            compact('jobs', 'educational_levels', 'kinships', 'neighborhoods', 'relative_info', 'kinship_info', 'student_id')
+        );
     }
 
     function edit_student_relative_info(Request $request)
@@ -341,29 +388,27 @@ class management_students_controller extends Controller
         if ($relative->save()) {
             return "cannot update kinships";
             $relativeid = relatives::select('id')
-            ->where('relative_fn', '=', $validatedData['relative_fn'])
-            ->where('relative_ln', '=', $validatedData['relative_ln'])
-            ->where('phone_number', '=', $validatedData['phone_number'])
-            ->get();
+                ->where('relative_fn', '=', $validatedData['relative_fn'])
+                ->where('relative_ln', '=', $validatedData['relative_ln'])
+                ->where('phone_number', '=', $validatedData['phone_number'])
+                ->get();
 
-        $relative_id = $relativeid[0]->id;
+            $relative_id = $relativeid[0]->id;
 
-        $students_id = $request->student_id;
-        $relative_id = $relative_id;
-        $student_relative = students_relatives::find([$students_id,$relative_id]);
+            $students_id = $request->student_id;
+            $relative_id = $relative_id;
+            $student_relative = students_relatives::find([$students_id, $relative_id]);
 
-        $student_relative->students_id = $request->student_id;
-        $student_relative->relative_id = $relative_id;
-        $student_relative->kinships_id = $validatedData['kinship'];
+            $student_relative->students_id = $request->student_id;
+            $student_relative->relative_id = $relative_id;
+            $student_relative->kinships_id = $validatedData['kinship'];
 
-        return redirect()->route('management.students.main')->with('success', 'تمت إضافة القريب بنجاح');
-
+            return redirect()->route('management.students.main')->with('success', 'تمت إضافة القريب بنجاح');
         } else {
             // The save operation failed
             return "Failed to save student.";
         }
-
-       }
+    }
 
 
     function  test()

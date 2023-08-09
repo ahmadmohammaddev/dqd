@@ -15,6 +15,8 @@ class CreatePivotalPointsCreditsTable extends Migration
     {
         Schema::create('pivotal_points_credits', function (Blueprint $table) {
             $table->id();
+            $table->string("deserved_action");
+            $table->integer("deserved_points");
             $table->timestamps();
         });
     }

@@ -60,11 +60,10 @@ class points_controller extends Controller
                 if($student_recitation['recitations_evaluations_id']==1)$student_balance+=(5*$cell_volume);
                 else if($student_recitation['recitations_evaluations_id']==2)$student_balance+=(3*$cell_volume);
                 else $student_balance+=(2*$cell_volume);
-
-                $students_points[$student->id]['name'] = $student->student_fn.$student->student_ln; // Store student's name
-                $students_points[$student->id]['points'] = $student_balance; // Store student's points
-
             }
+            $students_points[$student->id]['name'] = $student->student_fn.$student->student_ln; // Store student's name
+            $students_points[$student->id]['points'] = $student_balance; // Store student's points
+
         }
 
 

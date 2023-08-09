@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('date');
             $table->time('arrival_time')->nullable();
             $table->timestamps();
+
+            $table ->unique(['students_id','date']);
+
         });
     }
 

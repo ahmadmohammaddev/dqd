@@ -123,6 +123,14 @@ Route::prefix('management')->group(function () {
     Route::get('staff/profile/qualifications/{id}', [management_staff_controller::class, 'get_qualifications'])->name('management.staff.profile.qualifications');
 
 
+
+
+   //Atetndance
+   Route::get('attendance/students/show/groups/{id}', [management_students_controller::class, 'show_groups'])->name('management.attendance.students.show.groups');
+   Route::get('attendance/students/show/students/{id}', [management_students_controller::class, 'show_students'])->name('management.attendance.show.students');
+   Route::post('attendance/students/post', [management_students_controller::class, 'post_student_attndance'])->name('management.attendance.students.post');
+
+
 //staff profile
 
 });

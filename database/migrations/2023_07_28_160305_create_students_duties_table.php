@@ -17,13 +17,13 @@ class CreateStudentsDutiesTable extends Migration
             $table->id();
             $table->foreignId('students_id')->constrained('students')->onUpdate('cascade') ->onDelete('cascade');
             $table->foreignId('weeks_days_id')->constrained('weeks_days')->onUpdate('cascade') ->onDelete('cascade');
-            $table->json('duties');
+           // $table->json('duties');
             $table->foreignId('students_duties_variations_id')->constrained('students_duties_variations')->onUpdate('cascade') ->onDelete('cascade');
             $table->boolean('duty_status')->default(0);
             $table->date('doning_date');
             $table->timestamps();
 
-            $table ->unique(['students_id','doning_date','duties']);
+           // $table ->unique(['students_id','doning_date','duties'] ,'student_dutoes_restriction');
 
         });
     }

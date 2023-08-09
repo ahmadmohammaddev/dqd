@@ -303,12 +303,36 @@
                                     </li>
 
 
+                                    <li class="has-sub">
+                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                            data-target="#absence" aria-expanded="false"
+                                            aria-controls="absence">
+                                            <span class="nav-text">التفقد</span> <b class="caret"></b>
+                                        </a>
+                                        <ul class="collapse" id="absence">
+                                            <div class="sub-menu">
 
+                                                <li>
+                                                    <a href="{{ route('management.attendance.students.show.groups',['id' => 1]) }}">تفقد طلاب
+                                                        </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('management.students.main') }}">تفقد اساتذة
+                                                        </a>
+                                                </li>
+
+
+
+                                            </div>
+                                        </ul>
+                                    </li>
 
 
                                 </div>
                             </ul>
                         </li>
+
 
 
                         <li class="has-sub">
