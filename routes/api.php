@@ -26,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('accounts/login',[auth_controller::class,'login']);
 
-
 Route::prefix('quran')->group(function () {
     Route::get('courses/names/{id}',[quran_a_controller::class,'get_courses_names'])->name('quran.courses.names');//reciever id
     Route::get('groups/names/{id}',[quran_a_controller::class,'get_groups_names'])->name('quran.groups.names');//course id
@@ -67,7 +66,6 @@ Route::prefix('education')->group(function () {
     Route::post('group/lesson/add/{id}',[education_a_controller::class,'post_test'])->name('education.group.lesson.add');//group_id ,lesson id ,book id
     Route::put('group/lesson/update/{id}',[education_a_controller::class,'post_test'])->name('education.group.lesson.update');//group_id ,lesson id ,book id
     Route::delete('group/lesson/delete',[education_a_controller::class,'post_test'])->name('education.group.lesson.delete');//group_id ,lesson id ,book id
-
 
 });
 
