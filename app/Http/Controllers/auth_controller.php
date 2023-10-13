@@ -11,7 +11,28 @@ use Illuminate\Support\Str;
 
 class auth_controller extends Controller
 {
+
     function login(Request $request)
+    {
+        return view('management.accessibility.login_form');
+
+
+
+        if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            return response()->json([
+                "success" => false,
+                "status" => 200
+            ]);
+        }
+
+        $user = auth()->user();
+        /** @var \App\Models\User $user **/
+        $token = $user->createToken('token');
+        return $token->plainTextToken;
+    }
+
+
+    function api_login(Request $request)
     {
 
 

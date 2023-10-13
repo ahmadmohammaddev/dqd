@@ -55,9 +55,8 @@
                                             @else{{ $record->evaluation = $Fa }}
                                         @endif
 
+
                                         <tr>
-
-
                                             <th scope="row">{{ $i++ }}</th>
                                             <td>{{ $record->student_name }}</td>
                                             <td>{{ $record->surah_name }}</td>
@@ -66,9 +65,7 @@
                                             <td>{{ $record->recitting_date }}</td>
                                             <td>{{ $record ->page_percentage}}</td>
                                             <td>Later</td>
-
                                         </tr>
-
 
 
                                         @php

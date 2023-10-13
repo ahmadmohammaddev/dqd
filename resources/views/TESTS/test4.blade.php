@@ -30,42 +30,40 @@
 </head>
 <body>
     <div>
-        <button id="toggleButton">Toggle State</button>
+        <select id="categorySelect">
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+        </select>
         <button id="selectAllButton">Select All</button>
         <button id="deselectAllButton">Deselect All</button>
     </div>
     <div class="cards-container">
-        @if ($state === 1)
-            @for ($i = 1; $i <= 30; $i++)
-                <div class="card">{{ $i }}</div>
-            @endfor
-        @elseif ($state === 2)
-            @foreach ($surahs_info as $surah)
-                <div class="card">{{ $surah->surah_name }}</div>
-            @endforeach
-        @endif
+        <!-- Cards will be generated here based on the selected category -->
     </div>
 
     <script>
-        const toggleButton = document.getElementById('toggleButton');
+        const categorySelect = document.getElementById('categorySelect');
         const selectAllButton = document.getElementById('selectAllButton');
         const deselectAllButton = document.getElementById('deselectAllButton');
         const cardsContainer = document.querySelector('.cards-container');
-        let currentState = {{ $state }}; // Initialize currentState with the value from the controller
+        let selectedCategory = categorySelect.value;
 
-        toggleButton.addEventListener('click', () => {
-            currentState = currentState === 1 ? 2 : 1;
+        categorySelect.addEventListener('change', () => {
+            selectedCategory = categorySelect.value;
+            generateCards();
+        });
 
+        function generateCards() {
             cardsContainer.innerHTML = ''; // Clear existing content
 
-            if (currentState === 1) {
+            if (selectedCategory === '1') {
                 for (let i = 1; i <= 30; i++) {
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.textContent = i;
                     cardsContainer.appendChild(card);
                 }
-            } else if (currentState === 2) {
+            } else if (selectedCategory === '2') {
                 const surahsInfo = {!! json_encode($surahs_info) !!}; // Provide the JSON data directly from PHP
                 for (const surah of surahsInfo) {
                     const card = document.createElement('div');
@@ -82,21 +80,26 @@
                     card.classList.toggle('selected');
                 });
             });
+        }
 
-            // Select All button click event
-            selectAllButton.addEventListener('click', () => {
-                cardElements.forEach(card => {
-                    card.classList.add('selected');
-                });
-            });
-
-            // Deselect All button click event
-            deselectAllButton.addEventListener('click', () => {
-                cardElements.forEach(card => {
-                    card.classList.remove('selected');
-                });
+        // Select All button click event
+        selectAllButton.addEventListener('click', () => {
+            const cardElements = cardsContainer.querySelectorAll('.card');
+            cardElements.forEach(card => {
+                card.classList.add('selected');
             });
         });
+
+        // Deselect All button click event
+        deselectAllButton.addEventListener('click', () => {
+            const cardElements = cardsContainer.querySelectorAll('.card');
+            cardElements.forEach(card => {
+                card.classList.remove('selected');
+            });
+        });
+
+        // Initial generation of cards based on the selected category
+        generateCards();
     </script>
 </body>
 </html>

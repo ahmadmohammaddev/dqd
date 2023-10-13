@@ -173,6 +173,25 @@ class quran_a_controller extends Controller
         return view('quran.add_surahs', compact('students_groups', 'students_names', 'groups_names', 'recitations_evaluations', 'surahs_info', 'staff_reciever'));
     }
 
+    function get_basic_info_for_surahs_graph()
+    {
+        $state = 2; // Initial state
+
+        $students_names = students::select('id', 'student_fn', 'student_ln')->get();
+        $groups_names = groups::select('id', 'group_name')->get();
+        $recitations_evaluations = recitations_evaluations::select('id', 'reciting_evaluation')->orderby('id')->get();
+        $surahs_info = surahs::select('*')->get();
+        $students_groups = students_groups::select('id', 'students_id', 'groups_id')->get();
+
+        $staff_reciever = staffs_positions::select('staffs_positions.*', 'staffs.staff_fn as staff_fn', 'staffs.staff_ln as staff_ln')
+            ->whereBetween('staffs_positions.positions_id', [1, 3])
+            ->join('staffs', 'staffs.id', 'staffs_positions.staffs_id')
+            ->get();
+
+
+        return view('TESTS.test4', compact('state','students_groups', 'students_names', 'groups_names', 'recitations_evaluations', 'surahs_info', 'staff_reciever'));
+    }
+
     function post_surahs(Request $request)
     {
         try {
@@ -286,6 +305,7 @@ class quran_a_controller extends Controller
 
     function  test()
     {
+        return "hi";
         $students_names = students::select('id', 'student_fn', 'student_ln')->get();
         $groups_names = groups::select('id', 'group_name')->get();
         $recitations_evaluations = recitations_evaluations::select('id', 'reciting_evaluation')->orderby('id')->get();

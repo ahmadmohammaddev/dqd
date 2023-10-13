@@ -50,9 +50,9 @@ class management_students_controller extends Controller
     }
 
 
-    function show_groups($id)
+    function show_groups()
     {
-        $groups = groups::select('*')->where('courses_id', '=', $id)->get();
+        $groups = groups::select('*')->get();
 
         // $students = students::join('students_groups', 'students.id', '=', 'students_groups.students_id')
         // ->whereIn('students_groups.groups_id', $groups->pluck('id')) // Filter by group IDs

@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('accounts/login',[auth_controller::class,'login']);
+Route::post('accounts/login',[auth_controller::class,'api_login']);
 
 Route::prefix('quran')->group(function () {
     Route::get('courses/names/{id}',[quran_a_controller::class,'get_courses_names'])->name('quran.courses.names');//reciever id

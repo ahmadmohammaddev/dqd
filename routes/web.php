@@ -29,20 +29,30 @@ use App\Http\Controllers\rewards_department\points_controller;
 */
 
 Route::get('/', function () {
-    //return view('general.index');
     return view('general.index');
 });
 Route::post('/export-pdf', [QuranAController::class, 'export'])->name('export.pdf');
-Route::get('test', [quran_a_controller::class, 'test'])->name('test');
+Route::get('test', [quran_a_controller::class, 'test'])->name('testaa');
 Route::post('sss', [quran_a_controller::class, 'sss'])->name('sss');
 
-Route::get('accounts/registeration', [auth_controller::class, 'registeration'])->name('account.registeration');
+
+Route::prefix('accounts')->group(function () {
+
+    Route::get('login',[auth_controller::class,'login'])->name('accounts.login');
+    Route::get('registeration', [auth_controller::class, 'registeration'])->name('account.registeration');
+
+});
+
+
 
 Route::prefix('quran')->group(function () {
 
     Route::get('/home', function () {
         return view('quran.home');
     })->name('quran.home');
+
+
+    Route::get('/add/cellsgraph', [quran_a_controller::class, 'get_basic_info_for_surahs_graph'])->name('quran.add_surahs.graph');
 
     Route::get('add/cells', [quran_a_controller::class, 'get_basic_info_for_cells'])->name('quran.add_cells');
     Route::post('post/cell/multi', [quran_a_controller::class, 'post_multi_cell'])->name('quran.post_multi_cells');
@@ -54,6 +64,8 @@ Route::prefix('quran')->group(function () {
 
     Route::get('add/surahs', [quran_a_controller::class, 'get_basic_info_for_surahs'])->name('quran.add_surahs');
     Route::post('post/surahs', [quran_a_controller::class, 'post_surahs'])->name('quran.post_surahs');
+
+    //Route::post('post/surahs', [quran_a_controller::class, 'post_surahs'])->name('quran.post_surahs');
 
     Route::view('show/home', 'quran.show.home')->name('quran.show_home');
     Route::get('show/student/selector', [quran_a_controller::class, 'student_selector'])->name('quran.show.student_selector');
@@ -126,7 +138,7 @@ Route::prefix('management')->group(function () {
 
 
    //Atetndance
-   Route::get('attendance/students/show/groups/{id}', [management_students_controller::class, 'show_groups'])->name('management.attendance.students.show.groups');
+   Route::get('attendance/students/show/groups', [management_students_controller::class, 'show_groups'])->name('management.attendance.students.show.groups');
    Route::get('attendance/students/show/students/{id}', [management_students_controller::class, 'show_students'])->name('management.attendance.show.students');
    Route::post('attendance/students/post', [management_students_controller::class, 'post_student_attndance'])->name('management.attendance.students.post');
 
