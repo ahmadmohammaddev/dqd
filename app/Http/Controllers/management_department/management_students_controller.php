@@ -24,6 +24,7 @@ use App\Models\students_attendances;
 use App\Models\students_relatives;
 use App\Services\PayUService\Exception;
 use Illuminate\Database\QueryException;
+use Carbon\Carbon;
 
 class management_students_controller extends Controller
 {
@@ -32,17 +33,23 @@ class management_students_controller extends Controller
     function post_student_attndance(Request $request)
     {
 
+
         try {
             $attendanceDate = $request->input('attendance_date');
             $studentIds = $request->input('attendance');
+            $attendanceTime = $request->input('attendance_time');
 
-            foreach ($studentIds as $studentId) {
+
+            $recordsCount = count($studentIds);
+
+            for ($i = 0; $i < $recordsCount; $i++) {
                 students_attendances::create([
-                    'students_id' => $studentId,
+                    'students_id' => $studentIds[$i],
                     'date' => $attendanceDate,
+                    'arrival_time' => $attendanceTime[$i],
                 ]);
             }
-            return redirect()->back()->with('success', 'Attendance recorded successfully.');
+            return redirect()->route('management.attendance.students.show.groups')->with('success', 'Attendance recorded successfully.');
         } catch (QueryException $e) {
             $errorMessage = $e->getMessage();
             return redirect()->back()->with('error', "حصل خطأ يرجى مراجعة المطور !" . "\n" . $errorMessage);
@@ -63,11 +70,15 @@ class management_students_controller extends Controller
 
     function show_students($id)
     {
+        $currentdate = Carbon::now()->format('Y-m-d');
         $students = students_groups::join('students', 'students.id', '=', 'students_groups.students_id')
             ->where('students_groups.groups_id', $id)
             ->get();
-
-        return view('management.attendance.students', compact('students'));
+        $studnetIds = $students->pluck('id')->all();
+        $studentsAttendance = students_attendances::join('students','students.id', '=', 'students_attendances.students_id')
+            ->whereIn('students_id', $studnetIds)
+            ->get();
+        return view('management.attendance.students', compact('students','studentsAttendance'));
     }
 
     function main_home()

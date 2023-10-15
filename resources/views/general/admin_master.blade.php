@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
         rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- PLUGINS CSS STYLE -->
     <link href="{{ asset('backend/assets/plugins/toaster/toastr.min.css') }} " rel="stylesheet" />
     <link href="{{ asset('backend/assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
@@ -64,7 +64,7 @@
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
                 <div class="app-brand">
-                    <a href="/index.html">
+                    <a href="{{ route('index') }}">
                         <!--
                         <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
                             width="30" height="33" viewBox="0 4 30 33">
@@ -255,7 +255,7 @@
                                     </li>
                                     <li>
                                         <a class="sidenav-item-link" href="{{ route('management.staff.main') }}">
-                                            <span class="nav-text">كادر المسجد</span>
+                                            <span class="nav-text">الأساتذة</span>
 
                                         </a>
                                     </li>
@@ -313,12 +313,13 @@
                                             <div class="sub-menu">
 
                                                 <li>
-                                                    <a href="{{ route('management.attendance.students.show.groups',['id' => 1]) }}">تفقد طلاب
+                                                    <a href="{{ route('management.attendance.students.show.groups') }}">
+                                                    تفقد الطلاب
                                                         </a>
                                                 </li>
 
                                                 <li>
-                                                    <a href="{{ route('management.students.main') }}">تفقد اساتذة
+                                                    <a href="{{ route('management.attendance.students.show.groups') }}">عرض تفقد الطلاب
                                                         </a>
                                                 </li>
 
@@ -633,6 +634,8 @@
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     <script src="{{ asset('backend/assets/js/quranic_diamond.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/attendance_dep.js') }}"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -641,6 +644,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
 
 
 

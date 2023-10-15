@@ -1,50 +1,42 @@
 @extends('general.admin_master')
 <Style>
-    .circle-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
 
-    .circle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-        background-color: #3490dc;
-    }
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
 
-    .circle.circle-2 {
-        background-color: #3c94e7;
-    }
-
-    .circle.circle-3 {
-        background-color: #1f3b77;
-    }
-
-    .circle.circle-4 {
-        background-color: #1f59b1;
-    }
-
-    .circle.circle-5 {
-        background-color: #5a1ac2;
-    }
-
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 4px;
+  width: 15%;
+}
     /* Add more .circle-circle-N styles as needed */
 </style>
 @section('admin')
-    <div class="circle-container">
+@include('quran.components.attendance_student_flash')
+
+<div class="container">
         @foreach ($groups as $group)
-            <a href="{{ route('management.attendance.show.students', ['id' => $group->id]) }}" class="circle circle-{{ $loop->index + 1 }}">
-                {{ $group->group_name }}
-            </a>
+        <div class="card">
+            <div class="row">
+                <div class="col-xs">
+                    <img src="{{ asset('backend/assets/images/book.png') }}" alt="Avatar">
+                </div>
+
+                <div class="col-xs">
+                    <a href="{{ route('management.attendance.show.students', ['id' => $group->id]) }}">
+                        <h4><b>                {{ $group->group_name }}
+                        </b></h4>
+                       </a>
+                </div>
+            </div>
+          </div>
         @endforeach
-    </div>
+</div>
 @endsection
+{{--
+ --}}
+
+

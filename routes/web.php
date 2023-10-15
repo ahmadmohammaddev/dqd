@@ -30,7 +30,9 @@ use App\Http\Controllers\rewards_department\points_controller;
 
 Route::get('/', function () {
     return view('general.index');
-});
+}) -> name('index');
+
+
 Route::post('/export-pdf', [QuranAController::class, 'export'])->name('export.pdf');
 Route::get('test', [quran_a_controller::class, 'test'])->name('testaa');
 Route::post('sss', [quran_a_controller::class, 'sss'])->name('sss');
