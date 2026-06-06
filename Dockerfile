@@ -61,3 +61,4 @@ EXPOSE 80
 
 # Run startup script
 ENTRYPOINT ["/usr/local/bin/run.sh"]
+ 
