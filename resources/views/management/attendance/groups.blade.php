@@ -26,7 +26,7 @@ img {
                 </div>
 
                 <div class="col-xs">
-                    <a href="{{ route('management.attendance.show.students', ['id' => $group->id]) }}">
+                    <a href="{{ route('management.attendance.show.students', ['id' => $group->id , 'date' => now()->format('Y-m-d')] ) }}">
                         <h4><b>                {{ $group->group_name }}
                         </b></h4>
                        </a>

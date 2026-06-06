@@ -68,17 +68,20 @@ class management_students_controller extends Controller
         return view('management.attendance.groups', compact('groups'));
     }
 
-    function show_students($id)
+    function show_students(Request $request)
     {
-        $currentdate = Carbon::now()->format('Y-m-d');
+        $group_id = $request -> id;
+        $attendaceDate = $request -> date;
         $students = students_groups::join('students', 'students.id', '=', 'students_groups.students_id')
-            ->where('students_groups.groups_id', $id)
+            ->where('students_groups.groups_id', $group_id)
             ->get();
         $studnetIds = $students->pluck('id')->all();
         $studentsAttendance = students_attendances::join('students','students.id', '=', 'students_attendances.students_id')
             ->whereIn('students_id', $studnetIds)
+           // ->where('date',$attendaceDate)
             ->get();
-        return view('management.attendance.students', compact('students','studentsAttendance'));
+           //return $studentsAttendance;
+        return view('management.attendance.students', compact('students','studentsAttendance','group_id'));
     }
 
     function main_home()
@@ -422,10 +425,12 @@ class management_students_controller extends Controller
     }
 
 
-    function  test()
+    function  test(Request $request)
     {
-        return "hi";
+
     }
+
+
     function  post_test()
     {
         return "hi";

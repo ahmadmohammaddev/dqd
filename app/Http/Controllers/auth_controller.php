@@ -34,9 +34,6 @@ class auth_controller extends Controller
 
     function api_login(Request $request)
     {
-
-
-
         if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             return response()->json([
                 "success" => false,

@@ -33,7 +33,7 @@ Route::get('/', function () {
 }) -> name('index');
 
 
-Route::post('/export-pdf', [QuranAController::class, 'export'])->name('export.pdf');
+Route::post('/export-pdf', [quran_a_controller::class, 'export'])->name('export.pdf');
 Route::get('test', [quran_a_controller::class, 'test'])->name('testaa');
 Route::post('sss', [quran_a_controller::class, 'sss'])->name('sss');
 
@@ -141,7 +141,7 @@ Route::prefix('management')->group(function () {
 
    //Atetndance
    Route::get('attendance/students/show/groups', [management_students_controller::class, 'show_groups'])->name('management.attendance.students.show.groups');
-   Route::get('attendance/students/show/students/{id}', [management_students_controller::class, 'show_students'])->name('management.attendance.show.students');
+   Route::get('attendance/students/show/students/{id}/{date}', [management_students_controller::class, 'show_students'])->name('management.attendance.show.students');
    Route::post('attendance/students/post', [management_students_controller::class, 'post_student_attndance'])->name('management.attendance.students.post');
 
 

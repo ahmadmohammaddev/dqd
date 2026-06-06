@@ -93,6 +93,7 @@ class management_staff_controller extends Controller
         return view('management.staff.brief_info', compact('staff_info'));
     }
 
+    
     function show_staff_main_info_to_edit($id)
     {
 

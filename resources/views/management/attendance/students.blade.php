@@ -1,10 +1,13 @@
 @extends('general.admin_master')
 
 @section('admin')
+
 <div class="form-check form-switch">
     <input checked onchange="takingOrShowingAttendance()" class="form-check-input" type="checkbox" role="switch" id="takingOrShowingAttendanceSwitch">
     <label class="form-check-label" for="takingOrShowingAttendanceSwitch">أخذ التفقد أو عرضه</label>
-  </div>
+</div>
+
+<input type="hidden" id="group_id" name="group_id" value="<?php echo $group_id; ?>">
 
   <form id="takingAttendanceForm" action="{{ route('management.attendance.students.post') }}" method="POST">
     @csrf
@@ -79,18 +82,17 @@
         @include('quran.components.attendance_student_flash')
 
         <div class="form-group">
-            <h2 for="attendance_date"><center>الطلاب الحاضرين</center></h2>
+            <h2 for="dynamicAttendanceDate"><center>الطلاب الحاضرين</center></h2>
             <center>
-                <input  onchange="onChangeDate()" style="width: 50%" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" type="date"
-                    name="attendance_date" id="attendance_date" class="form-control" required>
+                <input  id="dynamicAttendanceDate" onchange="onChangeDate()" style="width: 50%" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" type="date"
+                    name="dynamicAttendanceDate" class="form-control" required>
             </center>
             <button style="font: bold" id="editDateButton" type="submit" class="btn btn-primary">الأستعلام عن هذا التاريخ</button>
-   //
         </div>
 
 
 
-        <table class="table">
+        <table class="table" id="attendanceTable">
             <thead>
                 <tr>
                     <th scope="col">
@@ -111,7 +113,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="attendanceTableBody">
                 @php
                     $i =0;
                     $checkboxStudentAttendance = "StudentAttendance".$i;
@@ -150,13 +152,21 @@
             </tbody>
         </table>
 
-        <button onclick="checkAttendanceEditing()" id="submitUpdatedAttendance" type="submit" class="btn btn-primary">تعديل</button>
+        {{-- <button onclick="checkAttendanceEditing()" id="submitUpdatedAttendance" type="submit" class="btn btn-primary">تعديل</button> --}}
 
     </form>
 
 
+    <br>
+    {{-- <button style="font: bold" id="test" class="btn btn-primary">Test</button> --}}
 
 
+<script>
+     $('#dynamicAttendanceDate').on('change',function(){
+        console.log(document.getElementById('dynamicAttendanceDate').value);
+    })
+
+</script>
 
 @endsection
 
@@ -198,3 +208,4 @@
         }
     </style>
 @endsection
+

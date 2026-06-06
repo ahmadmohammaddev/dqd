@@ -12,6 +12,7 @@ use App\Models\staffs_positions;
 use App\Models\groups;
 use App\Models\students_groups;
 use App\Models\quran_recitations;
+use App\Models\students_attendances;
 use GuzzleHttp\RetryMiddleware;
 use App\Services\PayUService\Exception;
 use Illuminate\Database\QueryException;
@@ -303,21 +304,25 @@ class quran_a_controller extends Controller
 
 
 
-    function  test()
+    function  test(Request $request)
     {
-        return "hi";
-        $students_names = students::select('id', 'student_fn', 'student_ln')->get();
-        $groups_names = groups::select('id', 'group_name')->get();
-        $recitations_evaluations = recitations_evaluations::select('id', 'reciting_evaluation')->orderby('id')->get();
-        $surahs_info = surahs::select('*')->get();
-        $students_groups = students_groups::select('id', 'students_id', 'groups_id')->get();
+        $group_id = $request -> group_id;
+        $attendaceDate = $request -> date;
 
-        $staff_reciever = staffs_positions::select('staffs_positions.*', 'staffs.staff_fn as staff_fn', 'staffs.staff_ln as staff_ln')
-            ->whereBetween('staffs_positions.positions_id', [1, 3])
-            ->join('staffs', 'staffs.id', 'staffs_positions.staffs_id')
+        $students = students_groups::join('students', 'students.id', '=', 'students_groups.students_id')
+            ->where('students_groups.groups_id', $group_id)
             ->get();
-        return view('TESTS.test', compact('students_groups', 'students_names', 'groups_names', 'recitations_evaluations', 'surahs_info', 'staff_reciever'));
+        $studnetIds = $students->pluck('id')->all();
+
+        $studentsAttendance = students_attendances::join('students','students.id', '=', 'students_attendances.students_id')
+            ->whereIn('students_id', $studnetIds)
+            ->where('date',$attendaceDate)
+            ->get();
+
+        return $studentsAttendance;
     }
+
+
     function  post_test(Request $request)
     {
         return $request;
