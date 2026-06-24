@@ -4,6 +4,7 @@ use App\Http\Controllers\auth_controller;
 use App\Http\Controllers\management_department\management_staff_controller;
 use App\Http\Controllers\management_department\management_courses_controller;
 use App\Http\Controllers\management_department\management_students_controller;
+use App\Http\Controllers\management_department\management_groups_controller;
 use App\Http\Controllers\management_department\rewa;
 
 use App\Http\Controllers\education_department\education_a_controller;
@@ -81,6 +82,10 @@ Route::prefix('management')->group(function () {
     Route::get('courses/home', [management_courses_controller::class, 'manin_home'])->name('management.courses.main');
     Route::post('/courses/add', [management_courses_controller::class, 'addCourse'])->name('management.courses.add');
     Route::put('/courses/edit', [management_courses_controller::class, 'editCourse'])->name('management.courses.edit');
+
+    Route::get('groups/home', [management_groups_controller::class, 'main_home'])->name('management.groups.main');
+    Route::post('/groups/add', [management_groups_controller::class, 'addGroup'])->name('management.groups.add');
+    Route::put('/groups/edit', [management_groups_controller::class, 'editGroup'])->name('management.groups.edit');
 
     Route::get('students/profile/main_info', [management_students_controller::class, 'edit_student_main_info'])->name('management.student.profile.editstudent');
     Route::get('students/home', [management_students_controller::class, 'main_home'])->name('management.students.main');

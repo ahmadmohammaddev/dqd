@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
@@ -12,8 +12,9 @@
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
         rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <!-- PLUGINS CSS STYLE -->
     <link href="{{ asset('backend/assets/plugins/toaster/toastr.min.css') }} " rel="stylesheet" />
     <link href="{{ asset('backend/assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
@@ -24,7 +25,105 @@
     <link href="{{ asset('backend/assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
 
     <!-- SLEEK CSS -->
-    <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
+    <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.rtl.css') }}" />
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6, .nav-text, .brand-name, .dropdown-item, .btn, .sidebar, .control-label, .form-control {
+            font-family: 'Cairo', sans-serif !important;
+        }
+
+        /* Fix sidebar brand styling: align icon and text correctly without clipping */
+        .app-brand {
+            overflow: hidden;
+        }
+        .app-brand a {
+            display: flex !important;
+            align-items: center !important;
+            height: 75px !important;
+            line-height: normal !important;
+            padding-right: 1.2rem !important;
+            padding-left: 1rem !important;
+            text-decoration: none;
+        }
+        .app-brand a img {
+            width: 35px !important;
+            height: auto !important;
+            flex-shrink: 0;
+        }
+        .app-brand .brand-name {
+            font-size: 0.95rem !important;
+            line-height: 1.3 !important;
+            margin-right: 0.5rem !important;
+            margin-left: 0 !important;
+            white-space: normal !important;
+            font-weight: 600 !important;
+            display: inline-block;
+            color: #ffffff !important;
+        }
+
+        /* Align custom Quran icon in the sidebar menu items */
+        .sidebar .nav > li > a img.quran-menu-icon {
+            width: 20px !important;
+            height: 20px !important;
+            margin-left: 0.94rem !important;
+            margin-right: 0px !important;
+            object-fit: contain !important;
+            vertical-align: middle;
+        }
+
+        /* Make the sidebar wider (280px instead of 250px) only when NOT minified */
+        body:not(.sidebar-minified) .left-sidebar {
+            width: 280px !important;
+        }
+        @media (max-width: 767px) {
+            body:not(.sidebar-minified) .left-sidebar {
+                transform: translateX(280px) !important;
+            }
+            .sidebar-minified-out .left-sidebar {
+                transform: translateX(0px) !important;
+            }
+        }
+        @media (min-width: 768px) {
+            body:not(.sidebar-minified) .left-sidebar {
+                transform: translateX(0) !important;
+                width: 280px !important;
+            }
+            body:not(.sidebar-minified) .app-brand a {
+                width: 280px !important;
+            }
+            body:not(.sidebar-minified) .sidebar-footer {
+                width: 280px !important;
+            }
+            
+            /* Adjust page wrappers and main header padding-right to match new width */
+            body:not(.sidebar-minified).sidebar-fixed .page-wrapper {
+                padding-right: 280px !important;
+            }
+            body:not(.sidebar-minified).sidebar-fixed .main-header {
+                padding-right: 280px !important;
+            }
+            
+            /* Sidebar Minified Expand State on Hover */
+            .sidebar-minified .left-sidebar:hover {
+                width: 280px !important;
+                margin-left: -205px !important; /* Shift leftwards by difference (280px - 75px = 205px) */
+            }
+            .sidebar-minified .left-sidebar:hover .app-brand a {
+                width: 280px !important;
+            }
+            
+            /* Collapse behavior */
+            .sidebar-collapse .left-sidebar {
+                margin-right: -280px !important;
+            }
+            .sidebar-collapse .page-wrapper {
+                padding-right: 0px !important;
+            }
+            .sidebar-collapse.header-fixed .page-wrapper .main-header {
+                padding-right: 0px !important;
+            }
+        }
+    </style>
 
 
 
@@ -67,17 +166,7 @@
                 <!-- Aplication Brand -->
                 <div class="app-brand">
                     <a href="{{ route('index') }}">
-                        <!--
-                        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                            width="30" height="33" viewBox="0 4 30 33">
-                            <g fill="none" fill-rule="evenodd">
-                                <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-                                <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                            </g>
-                        </svg>-->
-                        <img src="{{ asset('backend/assets/img/favicon.png') }}" width="30" height="33"
-                            viewBox="0 4 30 33">
-
+                        <img src="{{ asset('backend/assets/img/favicon.png') }}" alt="الماسية القرآنية">
                         <span class="brand-name">لوحة تحكم الماسة القرآنية</span>
                     </a>
                 </div>
@@ -93,25 +182,127 @@
 
 
 
-                        <li class="has-sub  active expand">
+                        <li class="has-sub {{ request()->routeIs('management.*') ? 'active expand' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#ui-elements" aria-expanded="false" aria-controls="ui-elements">
-                                <!-- <i class="mdi mdi-book-open"></i>-->
-                                <img src="{{ asset('backend/assets/img/quran.png') }}" width="30" height="33"
-                                    viewBox="0 4 30 33" style="margin-right: 6%">
-                                <span class="nav-text">القرآن الكريم</span> <b class="caret"></b>
+                                data-target="#pages" aria-expanded="false" aria-controls="pages">
+                                <i class="mdi mdi-arrange-bring-to-front"></i>
+                                <span class="nav-text">القسم الإداري</span> <b class="caret"></b>
                             </a>
-
-                            <ul class="collapse" id="ui-elements" data-parent="#sidebar-menu">
+                            <ul class="collapse {{ request()->routeIs('management.*') ? 'show' : '' }}" id="pages" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
 
 
-                                    <li class="has-sub">
+
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{ route('management.courses.main') }}">
+                                            <span class="nav-text">الدورات</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{ route('management.groups.main') }}">
+                                            <span class="nav-text">الحلقات</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{ route('management.staff.main') }}">
+                                            <span class="nav-text">الأساتذة</span>
+
+                                        </a>
+                                    </li>
+
+
+
+                                    <li class="has-sub {{ (request()->routeIs('management.student.*') || request()->routeIs('management.students.*') || request()->routeIs('management.parent.*')) ? 'active expand' : '' }}">
+                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                            data-target="#authentication" aria-expanded="false"
+                                            aria-controls="authentication">
+                                            <span class="nav-text">الطلاب</span> <b class="caret"></b>
+                                        </a>
+                                        <ul class="collapse {{ (request()->routeIs('management.student.*') || request()->routeIs('management.students.*') || request()->routeIs('management.parent.*')) ? 'show' : '' }}" id="authentication">
+                                            <div class="sub-menu">
+
+                                                <li>
+                                                    <a href="{{ route('management.students.main') }}">التسجيل والملفات
+                                                        الشخصية</a>
+                                                </li>
+
+                                                <li class="has-sub {{ (request()->routeIs('*duties*') || request()->routeIs('management.student.show.*')) ? 'active expand' : '' }}">
+                                                    <a class="sidenav-item-link" href="javascript:void(0)"
+                                                        data-toggle="collapse" data-target="#duties"
+                                                        aria-expanded="false" aria-controls="duties">
+                                                        <span class="nav-text">الواجبات</span> <b class="caret"></b>
+                                                    </a>
+                                                    <ul class="collapse {{ (request()->routeIs('*duties*') || request()->routeIs('management.student.show.*')) ? 'show' : '' }}" id="duties">
+                                                        <div class="sub-menu">
+
+                                                            <li>
+                                                                <a href="{{ route('management.students.main') }}">
+                                                                    إضافة واجبات</a>
+                                                            </li>
+
+                                                            <li class="">
+                                                                <a href="sign-up.html">الإطلاع على الواجبات</a>
+                                                            </li>
+
+                                                        </div>
+                                                    </ul>
+                                                </li>
+
+                                            </div>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="has-sub {{ request()->routeIs('management.attendance.*') ? 'active expand' : '' }}">
+                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                            data-target="#absence" aria-expanded="false"
+                                            aria-controls="absence">
+                                            <span class="nav-text">التفقد</span> <b class="caret"></b>
+                                        </a>
+                                        <ul class="collapse {{ request()->routeIs('management.attendance.*') ? 'show' : '' }}" id="absence">
+                                            <div class="sub-menu">
+
+                                                <li>
+                                                    <a href="{{ route('management.attendance.students.show.groups') }}">
+                                                    تفقد الطلاب
+                                                        </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('management.attendance.students.show.groups') }}">عرض تفقد الطلاب
+                                                        </a>
+                                                </li>
+
+
+
+                                            </div>
+                                        </ul>
+                                    </li>
+
+
+                                </div>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub {{ request()->routeIs('quran.*') ? 'active expand' : '' }}">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                data-target="#ui-elements" aria-expanded="false" aria-controls="ui-elements">
+                                <img src="{{ asset('backend/assets/img/quran.png') }}" class="quran-menu-icon" alt="القرآن الكريم">
+                                <span class="nav-text">القرآن الكريم</span> <b class="caret"></b>
+                            </a>
+
+                            <ul class="collapse {{ request()->routeIs('quran.*') ? 'show' : '' }}" id="ui-elements" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+
+
+                                    <li class="has-sub {{ (request()->routeIs('quran.home') || request()->routeIs('quran.add_*') || request()->routeIs('quran.student.recitation.add*')) ? 'active expand' : '' }}">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                             data-target="#components" aria-expanded="false" aria-controls="components">
                                             <span class="nav-text">إضافة تسميع للطلاب</span> <b class="caret"></b>
                                         </a>
-                                        <ul class="collapse" id="components">
+                                        <ul class="collapse {{ (request()->routeIs('quran.home') || request()->routeIs('quran.add_*') || request()->routeIs('quran.student.recitation.add*')) ? 'show' : '' }}" id="components">
                                             <div class="sub-menu">
 
                                                 <li>
@@ -139,14 +330,14 @@
 
 
 
-                                    <li class="has-sub">
+                                    <li class="has-sub {{ request()->routeIs('quran.show*') ? 'active expand' : '' }}">
                                         <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                             data-target="#quran_viewer" aria-expanded="false"
                                             aria-controls="quran_viewer">
                                             <span class="nav-text">الإطلاع على بيانات القرآن الكريم</span> <b
                                                 class="caret"></b>
                                         </a>
-                                        <ul class="collapse" id="quran_viewer">
+                                        <ul class="collapse {{ request()->routeIs('quran.show*') ? 'show' : '' }}" id="quran_viewer">
                                             <div class="sub-menu">
 
                                                 <li>
@@ -199,236 +390,20 @@
 
                         </li>
 
-
-
-
-
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#charts" aria-expanded="false" aria-controls="charts">
+                        <li class="has-sub" style="opacity: 0.5;">
+                            <a class="sidenav-item-link" href="javascript:void(0)" style="cursor: not-allowed; pointer-events: none;">
                                 <i class="mdi mdi-school"></i>
-                                <span class="nav-text">القسم العلمي</span> <b class="caret"></b>
+                                <span class="nav-text">القسم العلمي</span>
+                                <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="charts" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="chartjs.html">
-                                            <span class="nav-text">ChartJS</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-                                </div>
-                            </ul>
                         </li>
 
-
-
-
-
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#pages" aria-expanded="false" aria-controls="pages">
-                                <i class="mdi mdi-arrange-bring-to-front"></i>
-                                <span class="nav-text">القسم الإداري</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse" id="pages" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{ route('management.courses.main') }}">
-                                            <span class="nav-text">الدورات</span>
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="user-profile.html">
-                                            <span class="nav-text">الحلقات</span>
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="sidenav-item-link" href="{{ route('management.staff.main') }}">
-                                            <span class="nav-text">الأساتذة</span>
-
-                                        </a>
-                                    </li>
-
-
-
-                                    <li class="has-sub">
-                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#authentication" aria-expanded="false"
-                                            aria-controls="authentication">
-                                            <span class="nav-text">الطلاب</span> <b class="caret"></b>
-                                        </a>
-                                        <ul class="collapse" id="authentication">
-                                            <div class="sub-menu">
-
-                                                <li>
-                                                    <a href="{{ route('management.students.main') }}">التسجيل والملفات
-                                                        الشخصية</a>
-                                                </li>
-
-                                                <li class="has-sub">
-                                                    <a class="sidenav-item-link" href="javascript:void(0)"
-                                                        data-toggle="collapse" data-target="#duties"
-                                                        aria-expanded="false" aria-controls="duties">
-                                                        <span class="nav-text">الواجبات</span> <b class="caret"></b>
-                                                    </a>
-                                                    <ul class="collapse" id="duties">
-                                                        <div class="sub-menu">
-
-                                                            <li>
-                                                                <a href="{{ route('management.students.main') }}">
-                                                                    إضافة واجبات</a>
-                                                            </li>
-
-                                                            <li class="">
-                                                                <a href="sign-up.html">الإطلاع على الواجبات</a>
-                                                            </li>
-
-                                                        </div>
-                                                    </ul>
-                                                </li>
-
-                                            </div>
-                                        </ul>
-                                    </li>
-
-
-                                    <li class="has-sub">
-                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#absence" aria-expanded="false"
-                                            aria-controls="absence">
-                                            <span class="nav-text">التفقد</span> <b class="caret"></b>
-                                        </a>
-                                        <ul class="collapse" id="absence">
-                                            <div class="sub-menu">
-
-                                                <li>
-                                                    <a href="{{ route('management.attendance.students.show.groups') }}">
-                                                    تفقد الطلاب
-                                                        </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="{{ route('management.attendance.students.show.groups') }}">عرض تفقد الطلاب
-                                                        </a>
-                                                </li>
-
-
-
-                                            </div>
-                                        </ul>
-                                    </li>
-
-
-                                </div>
-                            </ul>
-                        </li>
-
-
-
-                        <li class="has-sub">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <li class="has-sub" style="opacity: 0.5;">
+                            <a class="sidenav-item-link" href="javascript:void(0)" style="cursor: not-allowed; pointer-events: none;">
                                 <i class="mdi mdi-gift"></i>
-
                                 <span class="nav-text">النقاط والعطيات</span>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
-                                <div class="sub-menu">
-                                    <li class="has-sub">
-                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#points" aria-expanded="false" aria-controls="points">
-                                            <span class="nav-text">قسم النقاط</span>
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="collapse" id="points">
-                                            <div class="sub-menu">
-                                                <li class="has-sub">
-                                                    <a href="javascript:void(0)" data-toggle="collapse"
-                                                        data-target="#points-option-1" aria-expanded="false"
-                                                        aria-controls="points-option-1">الإطلاع على النقاط<b
-                                                            class="caret"></b></a>
-                                                    <ul class="collapse" id="points-option-1">
-                                                        <div class="sub-menu">
-                                                            <li><a href={{ route('students.points.students.selector') }}>نقاط طالب</a></li>
-                                                            <li><a href="#">نقاط حلقة</a></li>
-                                                            <li><a href={{ route('students.points.course.points') }}>نقاط دورة</a></li>
-
-                                                        </div>
-                                                    </ul>
-                                                </li>
-
-                                                <li class="has-sub">
-                                                    <a href="javascript:void(0)" data-toggle="collapse"
-                                                        data-target="#points-option-2" aria-expanded="false"
-                                                        aria-controls="points-option-2">إضافة نقاط<b
-                                                            class="caret"></b></a>
-                                                    <ul class="collapse" id="points-option-2">
-                                                        <div class="sub-menu">
-                                                            <li><a href="#">نقاط لطالب</a></li>
-                                                            <li><a href={{ route('students.points.course.points') }}>نقاط لحلقة</a></li>
-                                                            <li><a href={{ route('students.points.course.points') }}>نقاط لدورة</a></li>
-                                                        </div>
-                                                    </ul>
-                                                </li>
-
-                                                <li class="has-sub">
-                                                    <a href="javascript:void(0)" data-toggle="collapse"
-                                                        data-target="#points-option-3" aria-expanded="false"
-                                                        aria-controls="points-option-3">إعدادات النقاط<b
-                                                            class="caret"></b></a>
-                                                    <ul class="collapse" id="points-option-3">
-                                                        <div class="sub-menu">
-                                                            <li><a href="#">نقاط الحضور</a></li>
-                                                            <li><a href="#">نقاط تسميع القرآن الكريم</a></li>
-                                                        </div>
-                                                    </ul>
-                                                </li>
-
-                                            </div>
-                                        </ul>
-                                    </li>
-
-                                    <li class="has-sub">
-                                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                            data-target="#gifts" aria-expanded="false" aria-controls="gifts">
-                                            <span class="nav-text">قسم العطيات</span>
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="collapse" id="gifts">
-                                            <div class="sub-menu">
-                                                <li class="has-sub">
-                                                    <a href="javascript:void(0)" data-toggle="collapse"
-                                                        data-target="#gifts-option-1" aria-expanded="false"
-                                                        aria-controls="gifts-option-1">قسم النقاط<b
-                                                            class="caret"></b></a>
-                                                    <ul class="collapse" id="gifts-option-1">
-                                                        <div class="sub-menu">
-                                                            <li><a href="#">الإطلاع على النقاط</a></li>
-                                                            <li><a href="#">خيار 2-1-2</a></li>
-                                                        </div>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">خيار 2-2</a></li>
-                                                <li><a href="#">خيار 2-3</a></li>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                </div>
-                            </ul>
                         </li>
 
 
@@ -437,25 +412,7 @@
 
                 </div>
 
-                <hr class="separator" />
 
-                <div class="sidebar-footer">
-                    <div class="sidebar-footer-content">
-                        <h6 class="text-uppercase">
-                            عدد الطلاب الكلي <span class="float-right">40%</span>
-                        </h6>
-                        <div class="progress progress-xs">
-                            <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
-                        </div>
-                        <h6 class="text-uppercase">
-                            عدد الخلايا المسمعة <span class="float-right">65%</span>
-                        </h6>
-                        <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-warning" style="width: 65%;" role="progressbar">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </aside>
 
@@ -469,19 +426,7 @@
                     <button id="sidebar-toggler" class="sidebar-toggle">
                         <span class="sr-only">Toggle navigation</span>
                     </button>
-                    <!-- search form -->
-                    <div class="search-form d-none d-lg-inline-block">
-                        <div class="input-group">
-                            <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                            <input type="text" name="query" id="search-input" class="form-control"
-                                placeholder="search is unavailable now" autofocus autocomplete="off" />
-                        </div>
-                        <div id="search-results-container">
-                            <ul id="search-results"></ul>
-                        </div>
-                    </div>
+
 
                     <div class="navbar-right ">
                         <ul class="nav navbar-nav">
@@ -495,92 +440,8 @@
                                 </a>
 
                             </li>-->
-                            <li class="dropdown notifications-menu">
-                                <button class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell-ring"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
 
-                                    <li class="dropdown-header">You have 5 notifications</li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-plus"></i> New user registered
-                                            <span class=" font-size-12 d-inline-block float-right"><i
-                                                    class="mdi mdi-clock-outline"></i> 10 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-remove"></i> User deleted
-                                            <span class=" font-size-12 d-inline-block float-right"><i
-                                                    class="mdi mdi-clock-outline"></i> 07 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
-                                            <span class=" font-size-12 d-inline-block float-right"><i
-                                                    class="mdi mdi-clock-outline"></i> 12 PM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-supervisor"></i> New client
-                                            <span class=" font-size-12 d-inline-block float-right"><i
-                                                    class="mdi mdi-clock-outline"></i> 10 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-server-network-off"></i> Server overloaded
-                                            <span class=" font-size-12 d-inline-block float-right"><i
-                                                    class="mdi mdi-clock-outline"></i> 05 AM</span>
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <a class="text-center" href="#"> View All </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- User Account -->
-                            <li class="dropdown user-menu">
-                                <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <img src="{{ asset('backend/assets/img/user/user.png') }}" width="60"
-                                        height="70" viewBox="0 4 60 60" class="img-circle" alt="User Image" />
-                                    <span class="d-none d-lg-inline-block">Yahya Sbini</span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <!-- User image -->
-                                    <li class="dropdown-header">
-                                        <img src="{{ asset('backend/assets/img/user/user.png') }}" class="img-circle"
-                                            alt="User Image" />
-                                        <div class="d-inline-block">
-                                            Abdus Salam <small class="pt-1">yahyasbini@gmail.com</small>
-                                        </div>
-                                    </li>
 
-                                    <li>
-                                        <a href="profile.html">
-                                            <i class="mdi mdi-account"></i> My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="email-inbox.html">
-                                            <i class="mdi mdi-email"></i> Message
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
-                                    </li>
-
-                                    <li class="dropdown-footer">
-                                        <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -616,7 +477,7 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
-    <script src="{{ asset('backend/assets/plugins/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/toaster/toastr.min.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/slimscrollbar/jquery.slimscroll.min.js') }}"></script>
@@ -638,10 +499,7 @@
     <script src="{{ asset('backend/assets/js/quranic_diamond.js') }}"></script>
     <script src="{{ asset('backend/assets/js/attendance_dep.js') }}"></script>
 
-    <!--JQuery Invocation -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!--JQuery Invocation -->
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
