@@ -35,7 +35,7 @@ WORKDIR /var/www/html
 
 # Copy composer files and install dependencies
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --ignore-platform-reqs
 
 # Copy the rest of the application
 COPY . .
@@ -44,7 +44,7 @@ COPY . .
 COPY --from=node-builder /app/public/build ./public/build
 
 # Complete composer autoloading optimization
-RUN composer dump-autoload --no-dev --optimize
+RUN composer dump-autoload --no-dev --optimize --ignore-platform-reqs
 
 # Set permissions for Laravel storage and bootstrap cache
 RUN chown -R www-data:www-data storage bootstrap/cache \
@@ -59,10 +59,6 @@ RUN chmod +x /usr/local/bin/run.sh
 
 # Expose port 80
 EXPOSE 80
-
-# Health check
-HEALTHCHECK --start-period=30s --interval=30s --timeout=5s --retries=3 \
-    CMD curl -f http://localhost/up || exit 1
 
 # Run startup script
 ENTRYPOINT ["/usr/local/bin/run.sh"]

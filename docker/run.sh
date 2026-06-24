@@ -30,13 +30,18 @@ if [ -z "$APP_KEY" ]; then
   php artisan key:generate --force --no-interaction
 fi
 
+# Create storage symlink
+php artisan storage:link --no-interaction 2>/dev/null || true
+
 # Run migrations
 echo "Running database migrations..."
-php artisan migrate --force --no-interaction
+php artisan migrate --force --no-interaction 2>&1
 
 # Run optimizations
-php artisan config:cache
-php artisan route:cache
+echo "Caching config..."
+php artisan config:cache 2>&1 || echo "Config cache failed, continuing..."
+echo "Caching routes..."
+php artisan route:cache 2>&1 || echo "Route cache failed, continuing..."
 
 # Fix permissions
 chown -R www-data:www-data storage bootstrap/cache
