@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\quran_department\quran_a_controller;
 use App\Http\Controllers\rewards_department\points_controller;
 
-
+// Health check for Coolify
+Route::get('/up', fn () => response('ok'));
 
 
 /*
