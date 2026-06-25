@@ -50,6 +50,9 @@ RUN composer dump-autoload --no-dev --optimize --ignore-platform-reqs
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
+# Copy seed data to a location outside the storage volume
+COPY storage/app/csv /var/www/html/csv-seed-data
+
 # Copy Nginx configuration
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 

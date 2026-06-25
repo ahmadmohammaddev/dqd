@@ -43,8 +43,12 @@ php artisan config:cache 2>&1 || echo "Config cache failed, continuing..."
 echo "Caching routes..."
 php artisan route:cache 2>&1 || echo "Route cache failed, continuing..."
 
-# Ensure CSV seed directory exists
+# Ensure CSV seed directory exists and populate from image (bypasses persistent volume)
 mkdir -p storage/app/csv
+if [ -d /var/www/html/csv-seed-data ] && [ -z "$(ls -A storage/app/csv 2>/dev/null)" ]; then
+  echo "Copying seed CSV files into storage volume..."
+  cp -r /var/www/html/csv-seed-data/* storage/app/csv/
+fi
 
 # Fix permissions
 chown -R www-data:www-data storage bootstrap/cache
