@@ -43,6 +43,9 @@ php artisan config:cache 2>&1 || echo "Config cache failed, continuing..."
 echo "Caching routes..."
 php artisan route:cache 2>&1 || echo "Route cache failed, continuing..."
 
+# Ensure CSV seed directory exists
+mkdir -p storage/app/csv
+
 # Fix permissions
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
