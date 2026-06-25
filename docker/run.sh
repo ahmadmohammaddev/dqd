@@ -25,7 +25,7 @@ echo "Database is reachable!"
 
 # ── Laravel bootstrapping ──────────────────────────────────
 # Force APP_URL to HTTPS for correct asset URLs behind Traefik
-export APP_URL="${APP_URL:-https://dqd.today}"
+export APP_URL="https://dqd.today"
 
 # Generate app key if not set via env
 if [ -z "$APP_KEY" ]; then
