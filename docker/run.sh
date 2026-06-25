@@ -24,9 +24,6 @@ fi
 echo "Database is reachable!"
 
 # ── Laravel bootstrapping ──────────────────────────────────
-# Ensure APP_URL is correct for HTTPS asset URLs
-unset APP_URL
-echo "APP_URL=https://dqd.today" > .env
 
 # Generate app key if not set via env
 if [ -z "$APP_KEY" ]; then
